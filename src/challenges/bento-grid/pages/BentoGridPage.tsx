@@ -1,8 +1,23 @@
+import Audience from "../components/Audience";
+import Content from "../components/Content";
+import CreatePost from "../components/CreatePost";
+import GrowFollowers from "../components/GrowFollowers";
+import Maintain from "../components/Maintain";
+import MultipleAccounts from "../components/MultipleAccounts";
+import Schedule from "../components/Schedule";
+import SocialMedia from "../components/SocialMedia";
+
 export function BentoGridPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Bento Grid Challenge</h1>
-      <p>This is the page for the Bento Grid challenge.</p>
-    </div>
+    <main className="grid grid-cols-1 gap-4">
+      <SocialMedia />
+      <MultipleAccounts />
+      <Maintain />
+      <Schedule />
+      <GrowFollowers />
+      <Audience/>
+      <CreatePost/>
+      <Content/>
+    </main>
   );
 }
