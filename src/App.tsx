@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   return (
-    <main className="flex min-h-svh flex-col items-center justify-center">
+    <main className="flex min-h-svh flex-col ">
       <Routes>
         <Route path="/" element={<ChallengeGallery />} />
         <Route
