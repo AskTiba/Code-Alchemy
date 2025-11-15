@@ -17,12 +17,7 @@ const personalInfoSchema = multiStepFormSchema.pick({
 
 type PersonalInfoSchema = z.infer<typeof personalInfoSchema>;
 
-interface PersonalInfoProps {
-  onNext: () => void;
-  onSaveData: (data: PersonalInfoSchema) => void;
-}
-
-export default function PersonalInfo({ onNext, onSaveData }: PersonalInfoProps) {
+export default function PersonalInfo() {
   const form = useForm<PersonalInfoSchema>({
     resolver: zodResolver(personalInfoSchema),
     defaultValues: {
@@ -33,14 +28,13 @@ export default function PersonalInfo({ onNext, onSaveData }: PersonalInfoProps) 
   });
 
   const onSubmit = (data: PersonalInfoSchema) => {
-    onSaveData(data);
-    onNext();
+    console.log("Personal Info Submitted:", data);
   };
 
   return (
-    <main className="bg-[#e0d3c2] p-4 rounded-lg">
+    <main className="bg-white p-4 rounded-lg">
       <h2 className="text-2xl font-bold mt-4">Personal Info</h2>
-      <p className="my-2 text-xl">
+      <p className="my-2 text-lg text-gray-500">
         Please provide your name, email address, and phone number.
       </p>
       <form className="my-8" onSubmit={form.handleSubmit(onSubmit)}>
@@ -55,8 +49,8 @@ export default function PersonalInfo({ onNext, onSaveData }: PersonalInfoProps) 
                   {...field}
                   id={field.name}
                   aria-invalid={fieldState.invalid}
-                  type="text"
-                  className="border border-[#3d2b1f] py-2 rounded-lg"
+                  type="text"placeholder="eg. Mwesigwe Redempta"
+                  className="border border-[#3d2b1f] py-2 rounded-lg px-3"
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
@@ -73,7 +67,8 @@ export default function PersonalInfo({ onNext, onSaveData }: PersonalInfoProps) 
                   id={field.name}
                   aria-invalid={fieldState.invalid}
                   type="email"
-                  className="border border-[#3d2b1f] py-2 rounded-lg"
+                  placeholder="eg. redjade@forever.com"
+                  className="border border-[#3d2b1f] py-2 rounded-lg px-3"
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
@@ -90,14 +85,14 @@ export default function PersonalInfo({ onNext, onSaveData }: PersonalInfoProps) 
                   {...field}
                   aria-invalid={fieldState.invalid}
                   type="text"
-                  className="border border-[#3d2b1f] py-2 rounded-lg"
+                  placeholder="eg. +256 783 568 231"
+                  className="border border-[#3d2b1f] py-2 rounded-lg px-3"
                 />
                 {fieldState.error && <FieldError errors={[fieldState.error]} />}
               </Field>
             )}
           />
         </FieldGroup>
-        
       </form>
     </main>
   );
