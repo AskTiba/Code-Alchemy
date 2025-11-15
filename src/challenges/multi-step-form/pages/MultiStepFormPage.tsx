@@ -46,7 +46,7 @@ export function MultiStepFormPage() {
         ))}
       </section>
 
-      <div className="relative z-10 px-4">
+      <div className="relative z-10 px-4 top-1">
         {currentStep === 1 && <PersonalInfo />}
         {currentStep === 2 && <SelectPlan />}
         {currentStep === 3 && <PickAddons />}
@@ -54,7 +54,7 @@ export function MultiStepFormPage() {
         {currentStep === 5 && <Appreciation />}
       </div>
 
-      <div className={`bg-white w-full fixed bottom-0 left-0 p-8 flex items-center ${currentStep === 1 ? "justify-end" : "justify-between"}`}>
+      <div className={`bg-white w-full fixed bottom-0 left-0 p-6 flex items-center ${currentStep === 1 ? "justify-end" : "justify-between"}`}>
         {currentStep > 1 && (
           <Button className="text-gray-400" onClick={handleGoBack}>
             Go Back
