@@ -16,7 +16,7 @@ export default function FinishUp() {
         <hr className="border border-gray-500ay" />
         <div className="flex justify-between items-center">
           <article className="text-lg">
-            <div className=" text-gray-500 font-medium">Online service</div>
+            <div className="text-gray-500 font-medium">Online service</div>
           </article>
           <div className="font-black text-lg">$10/yr</div>
         </div>
