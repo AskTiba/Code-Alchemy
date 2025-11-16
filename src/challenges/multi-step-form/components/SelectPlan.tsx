@@ -74,8 +74,8 @@ export default function SelectPlan() {
                   <div
                     className={`flex flex-col justify-between border p-4 rounded-lg cursor-pointer w-full md:w-1/3 ${
                       isSelected
-                        ? "border-purple-700 bg-purple-50"
-                        : "border-gray-500"
+                        ? "border-blue-950 bg-purple-50"
+                        : "border-gray-400"
                     }`}
                     onClick={() => field.onChange(plan.id)}
                   >
@@ -90,7 +90,7 @@ export default function SelectPlan() {
                     />
                     <label
                       htmlFor={plan.id}
-                      className="flex gap-4 h-full cursor-pointer"
+                      className="flex md:flex-col gap-4 h-full cursor-pointer"
                     >
                       <img
                         src={plan.icon}
@@ -98,10 +98,10 @@ export default function SelectPlan() {
                         className="w-14 h-14"
                       />
                       <div className="flex flex-col gap-1">
-                        <h3 className="font-bold text-lg">
+                        <h3 className="font-medium text-base">
                           {plan.id.charAt(0).toUpperCase() + plan.id.slice(1)}
                         </h3>
-                        <p className="text-sm font-medium text-gray-500">
+                        <p className="text-sm text-gray-500">
                           {isYearly
                             ? `$${plan.yearlyPrice}/yr`
                             : `$${plan.monthlyPrice}/mo`}
@@ -141,6 +141,8 @@ export default function SelectPlan() {
                 onCheckedChange={(checked) =>
                   field.onChange(checked ? "yearly" : "monthly")
                 }
+                className="data-[state=checked]:bg-[#FF00AA] data-[state=unchecked]:bg-[#222222]"
+                thumbClassName="data-[state=checked]:bg-[#00FFAA] data-[state=unchecked]:bg-[#FFD700]"
               />
             )}
           />
@@ -155,7 +157,6 @@ export default function SelectPlan() {
             Yearly
           </Label>
         </div>
-        
       </form>
     </main>
   );

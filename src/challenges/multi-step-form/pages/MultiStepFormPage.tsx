@@ -10,6 +10,7 @@ import desktopImage from "../assets/images/bg-sidebar-desktop.svg";
 
 export function MultiStepFormPage() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [maxStepReached, setMaxStepReached] = useState(1);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -26,13 +27,23 @@ export function MultiStepFormPage() {
 
   const handleNextStep = () => {
     if (currentStep < 5) {
-      setCurrentStep(currentStep + 1);
+      const newStep = currentStep + 1;
+      if (newStep > maxStepReached) {
+        setMaxStepReached(newStep);
+      }
+      setCurrentStep(newStep);
     }
   };
 
   const handleGoBack = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const handleStepClick = (step: number) => {
+    if (step <= maxStepReached) {
+      setCurrentStep(step);
     }
   };
 
@@ -48,12 +59,16 @@ export function MultiStepFormPage() {
             className="w-full object-cover absolute top-0 left-0 z-0 md:static md:rounded-2xl md:h-full"
           />
           {/* Existing Step Indicators */}
-          <section className="my-8 flex justify-center md:-mt-2 items-center gap-4 relative z-10 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:flex-col md:items-start md:justify-start md:p-8 md:gap-8">
+          <section className="my-8 flex justify-center md:-mt-2 items-center gap-4 relative z-10 md:absolute md:top-0 md:left-0 md:w-full md:h-full md:flex-col md:items-start md:justify-start md:p-8 md:gap-5">
             {[1, 2, 3, 4].map((step) => (
-              <div key={step} className="flex items-center gap-4">
+              <div
+                key={step}
+                className="flex items-center gap-4 cursor-pointer"
+                onClick={() => handleStepClick(step)}
+              >
                 <span
                   className={`size-8 flex justify-center font-bold items-center border-2 rounded-full ${
-                    currentStep === step
+                    currentStep === step || (currentStep === 5 && step === 4)
                       ? "bg-white text-blue-950 "
                       : "bg-transparent text-white"
                   }`}
