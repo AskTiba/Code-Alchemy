@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { ChallengeGallery } from "./pages/ChallengeGallery";
 import { MultiStepFormPage } from "./challenges/multi-step-form/pages/MultiStepFormPage";
 import { BentoGridPage } from "./challenges/bento-grid/pages/BentoGridPage";
-import "./App.css";
+
 
 function App() {
   return (
